@@ -1,0 +1,142 @@
+{
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.7/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.7",
+    "version": "{version}",
+    "id": "{appid}",
+    "packageName": "com.microsoft.teams.extension",
+    "developer": {
+        "name": "David McWee",
+        "websiteUrl": "{baseUrl0}",
+        "privacyUrl": "{baseUrl0}/privacy.html",
+        "termsOfUseUrl": "{baseUrl0}/termsofuse.html" 
+    },
+    "icons": {
+        "color": "color.png",
+        "outline": "outline.png"
+    },
+    "name": {
+        "short": "{appname}",
+        "full": "{fullappname}"
+    },
+    "description": {
+        "short": "Short description for {appname}.",
+        "full": "Full description of {appname} for Microsoft Teams."
+    },
+    "accentColor": "#FFFFFF",
+    "bots": [
+        {
+            "botId": "{botId0}",
+            "scopes": ["personal"],
+            "supportsFiles": false,
+            "isNotificationOnly": false
+        }
+    ],
+    "composeExtensions": [
+        {
+            "botId": "{botId0}",
+            "commands": [
+                {
+                    "id": "newTask",
+                    "type": "action",
+                    "context": [
+                        "message"
+                    ],
+                    "description": "Create a new ToDo Task",
+                    "title": "New ToDo Task",
+                    "parameters": [
+                        {
+                            "name":"title",
+                            "title": "Task Title",
+                            "description": "Title of the task",
+                            "inputType": "text"
+                        },
+                        {
+                            "name":"taskStatus",
+                            "title": "Status",
+                            "description": "The status of the task when created",
+                            "inputType": "choiceset",
+                            "choices": [
+                                {
+                                    "title":"Not Started",
+                                    "value": "notStarted"
+                                },
+                                {
+                                    "title":"In Progress",
+                                    "value": "inProgress"
+                                },
+                                {
+                                    "title":"Completed",
+                                    "value": "completed"
+                                },
+                                {
+                                    "title":"Waiting On Others",
+                                    "value": "waitingOnOthers"
+                                },
+                                {
+                                    "title":"Deferred",
+                                    "value": "deferred"
+                                }
+                            ]
+                        },
+                        {
+                            "name":"dueDate",
+                            "title": "Due By",
+                            "description": "When must the task be completed",
+                            "inputType": "date"
+                        },
+                        {
+                            "name":"dueDateTime",
+                            "title": "Due By Time",
+                            "description": "Due by time of day",
+                            "inputType": "time"
+                        },
+                        {
+                            "name":"importance",
+                            "title": "Task Priority",
+                            "description": "The tasks completion priority",
+                            "inputType": "choiceset",
+                            "choices": [
+                                {
+                                    "title":"Low",
+                                    "value": "low"
+                                },
+                                {
+                                    "title":"Medium",
+                                    "value": "normal"
+                                },
+                                {
+                                    "title":"High",
+                                    "value": "high"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "login",
+                    "type": "action",
+                    "context": [
+                        "message",
+                        "compose",
+                        "commandBox"
+                    ],
+                    "description": "Login to the ToDo Task Bot",
+                    "title":"Todo Login",
+                    "fetchTask": false
+                }
+            ]
+        }
+    ],
+    "configurableTabs": [],
+    "staticTabs": [],
+    "permissions": [
+        "identity",
+        "messageTeamMembers"
+    ],
+    "validDomains": [
+        "token.botframework.com",
+        "login.microsoftonline.com",
+        "*.ngrok.io",
+        "mcweetodo.azurewebsites.net"
+    ]
+}
